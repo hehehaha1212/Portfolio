@@ -52,16 +52,16 @@ const Hero = () => {
                     </div>
 
                     {/* Heading */}
-                    <h3 className="text-5xl sm:text-5xl lg:text-5xl pb-0 mb-0 tracking-tight text-pretty leading-tight">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl pb-0 mb-0 tracking-tight text-pretty leading-tight hero-h3">
                        SURYANSH SRIVASTAVA
                     </h3>
-                    <h1 className="text-5xl sm:text-5xl lg:text-7xl tracking-tight text-pretty leading-tight">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight text-pretty leading-tight hero-h1">
                         Graphic Designer
                         <span className="text-accent"> & Video editor</span>
                     </h1>
 
                     {/* Paragraph */}
-                    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+                    <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto hero-lead">
                         Harnessing the power of artificial intelligence to revolutionize
                         industries and enhance human experiences.
                     </p>
@@ -85,7 +85,7 @@ const Hero = () => {
                                 <Button size="lg">Appointment</Button>
                                 <Button
                                     size="lg"
-                                    className="bg-white/10 backdrop-blur-md text-white transition-all duration-300 hover:bg-black"
+                                    className="hidden sm:inline-flex bg-white/10 backdrop-blur-md text-white transition-all duration-300 hover:bg-black"
                                 >
                                     Contact me
                                     <ArrowRight className="w-5 h-4 ml-2" />
@@ -133,7 +133,7 @@ const Hero = () => {
                 {/* ── Scroll reveal text ── */}
                 <h1
                     ref={textRef}
-                    className="text-5xl sm:text-5xl lg:text-5xl tracking-tight leading-tight mt-20"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl tracking-tight leading-tight mt-20 hero-h1"
                 >
                     {chars.map((char, i) => (
                         <AnimatedChar

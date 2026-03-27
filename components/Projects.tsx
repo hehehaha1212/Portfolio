@@ -46,6 +46,16 @@ function Card({ project }) {
 
                 <p className="text-white/80 text-sm">{project.desc}</p>
             </div>
+            {/* Content below image */}
+            <div className="p-4 bg-transparent ">
+                <div className="overflow-hidden">
+                    <div className="text-black font-semibold text-lg">
+                        {project.title}
+                    </div>
+                </div>
+
+                <p className="text-black/70 text-sm mt-1">{project.desc}</p>
+            </div>
         </div>
     );
 }

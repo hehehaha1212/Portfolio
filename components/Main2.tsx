@@ -60,7 +60,7 @@ const services = [
 
 export default function ServicesSection() {
     return (
-        <section className="relative pl-20  ml-60 w-[70%] py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-white to-black text-white overflow-hidden"
+        <section className="relative mx-auto max-w-5xl py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-white to-black text-white overflow-hidden"
             style={{
                 backgroundImage:
                     "url('https://framerusercontent.com/images/HQiQT243MN1itZOX771FxR6euwI.png')",

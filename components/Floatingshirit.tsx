@@ -182,29 +182,7 @@ export default function FloatingShirt() {
                         </p>
                     </div>
 
-                    {/* ── Bottom-left logo badge ── */}
-                    <div
-                        className="absolute bottom-10 left-8 z-20"
-                        style={{
-                            opacity: Math.min(scrollY / 120, 1),
-                            transition: "opacity 0.5s ease",
-                        }}
-                    >
-                        <div
-                            style={{
-                                border: "2px solid #111",
-                                borderRadius: "999px",
-                                padding: "0.4rem 1.2rem",
-                                fontFamily: "'Anton', sans-serif",
-                                fontSize: "1rem",
-                                letterSpacing: "0.12em",
-                                color: "#111",
-                                background: "transparent",
-                            }}
-                        >
-                            GLOBAL
-                        </div>
-                    </div>
+                    {/* GLOBAL badge removed per request */}
 
                     {/* Extra scroll space so text reveals work */}
                     <div style={{ height: "100vh" }} />

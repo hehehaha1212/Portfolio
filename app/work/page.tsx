@@ -12,8 +12,8 @@ export default function WorkPage() {
         <div className="bg-[#f0efeb] min-h-screen text-black">
             <Navbar />
             <main className="max-w-6xl mx-auto py-40 px-6">
-                <h1 className="text-4xl font-bold mb-4">Work_</h1>
-                <p className="text-black text-xl pr-70">Experienced in using advanced AI tools such as Higgsfield AI, Flow AI, Kling AI, ChatGPT Go, and Nano Banana (Gemini) for ideation, scripting, visual generation, and workflow optimization in video editing projects..</p>
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Work_</h1>
+                <p className="text-black w-[vw-60%] text-base sm:text-lg md:text-xl">Experienced in using advanced AI tools such as Higgsfield AI, Flow AI, Kling AI, ChatGPT Go, and Nano Banana (Gemini) for ideation, scripting, visual generation, and workflow optimization in video editing projects.</p>
             </main>
             <FloatingShirt />
             {/*<FloatingShirt2/>*/}

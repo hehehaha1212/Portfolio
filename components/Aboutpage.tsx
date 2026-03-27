@@ -72,7 +72,7 @@ export default function AboutSection() {
             <img
               src="https://portfolio-suryansh-kappa.vercel.app/me.jpg"
               alt="team working"
-              className="w-full h-[40vw] object-cover"
+              className="w-full h-[40vw] object-cover object-top"
             />
           </div>
 

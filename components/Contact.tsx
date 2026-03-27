@@ -8,7 +8,7 @@ const Contact = () => {
                 <p className="text-lg text-white/60 mb-8">
                     Nubien comes with dedicated support to help you launch and maintain your site without friction.
                 </p>
-                <Button size="lg" className="rounded-full bg-accent-20 text-white hover:bg-purple-700">
+                <Button size="lg" className="rounded-full bg-accent text-white hover:bg-accent/90">
                     Book a 15-min Call
                 </Button>
             </div>
