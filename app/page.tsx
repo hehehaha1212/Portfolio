@@ -11,6 +11,12 @@ import Main3 from '@/components/Main3'
 import Footer from '@/components/Footer'
 import Main4 from '@/components/Main4'
 import Contact from '@/components/Contact'
+import ServicesSection from '@/components/Main2'
+import SupportHero from '@/components/Main3'
+import PortfolioLayered from '@/components/Main4'
+import FAQSection from '@/components/FAQ'
+import GlowContactForm from '@/components/GlowcontactForm'
+import FloatingShirt from '@/components/Floatingshirit'
 
 export default function Home() {
   return (
@@ -18,19 +24,22 @@ export default function Home() {
 
       <Navbar />
       <Hero />
-      <Main />
-      <Main2 />
+
+      <ServicesSection />
       {/* Services Section */}
-      <Main3 />
+      <SupportHero/>
 
       {/* Portfolio Section */}
-      <Main4 />
+      <PortfolioLayered />
+       
 
-      {/* CTA Section */}
-      <Contact/>
+      <GlowContactForm/>
+
+      <FAQSection/>
 
       {/* Footer */}
       <Footer />
+      
     </div>
   )
 }

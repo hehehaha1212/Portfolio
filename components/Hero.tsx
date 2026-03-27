@@ -6,8 +6,8 @@ import RotatingCircle from "./RotatingCircle";
 
 const images = [
     "/test.svg",
-    "/images.png",
-    "/images.png",
+    "/image2.png",
+    "/after.png",
     "/images.png",
 ];
 
@@ -52,9 +52,12 @@ const Hero = () => {
                     </div>
 
                     {/* Heading */}
+                    <h3 className="text-5xl sm:text-5xl lg:text-5xl pb-0 mb-0 tracking-tight text-pretty leading-tight">
+                       SURYANSH SRIVASTAVA
+                    </h3>
                     <h1 className="text-5xl sm:text-5xl lg:text-7xl tracking-tight text-pretty leading-tight">
                         Graphic Designer
-                        <span className="text-accent"> & Video Editor</span>
+                        <span className="text-accent"> & Video editor</span>
                     </h1>
 
                     {/* Paragraph */}
@@ -90,13 +93,13 @@ const Hero = () => {
                             </div>
 
                             {/* Divider */}
-                            <div className="flex justify-center my-6 w-full">
+                            <div className="flex justify-center my-6 w-[60vw]">
                                 <div className="w-1/2 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-70" />
                             </div>
 
                             {/* Image strip */}
                             <div
-                                className="relative w-[500px] overflow-hidden mt-2"
+                                className="relative w-[700px] overflow-fit mt-2"
                                 style={{
                                     maskImage: "linear-gradient(to right, transparent, white 15%, white 85%, transparent)",
                                     WebkitMaskImage: "linear-gradient(to right, transparent, white 15%, white 85%, transparent)",
@@ -106,7 +109,7 @@ const Hero = () => {
                                     {[...images, ...images].map((src, i) => (
                                         <div
                                             key={i}
-                                            className="flex-shrink-0 w-24 h-16 rounded-lg overflow-hidden border border-white/10"
+                                            className="flex-shrink-0 w-40 h-16 rounded-lg overflow-hidden border border-white/10"
                                         >
                                             <img
                                                 src={src}
@@ -142,7 +145,7 @@ const Hero = () => {
                         />
                     ))}
                 </h1>
-                <RotatingCircle/>
+                <RotatingCircle />
 
             </div>
 

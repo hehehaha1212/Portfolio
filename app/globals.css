@@ -125,3 +125,15 @@
   }
 }
 
+.perspective {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-x-180 {
+  transform: rotateX(360deg);
+}
+

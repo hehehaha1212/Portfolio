@@ -143,7 +143,7 @@ const RotatingCircle = () => {
                     <span
                         className="w-5 h-5 rounded-full flex items-center justify-center"
                         style={{
-                            background: "linear-gradient(180deg, rgb(79,26,214) 0%, rgb(128,89,227) 100%)",
+                            background: "linear-gradient(180deg, rgba(26, 82, 214, 1) 0%, rgba(89, 146, 227, 1) 100%)",
                         }}
                     >
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
@@ -171,8 +171,8 @@ const RotatingCircle = () => {
                 <Button
                     size="lg"
                     style={{
-                        background: "linear-gradient(180deg, rgb(79,26,214) 0%, rgb(128,89,227) 100%)",
-                        border: "3px solid rgba(255,255,255,0.15)",
+                        background: "linear-gradient(180deg, rgba(26, 85, 214, 1) 0%, rgba(89, 133, 227, 1) 100%)",
+                        border: "1px solid rgba(255,255,255,0.15)",
                         borderRadius: 10,
                         color: "white",
                         padding: "0 28px",
@@ -183,8 +183,8 @@ const RotatingCircle = () => {
                 </Button>
                 <div className="mt-16 w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
                     {[
-                        { title: "Design", desc: "Clean and modern UI/UX systems" },
-                        { title: "Motion", desc: "Engaging animations & visuals" },
+                        { title: "Design", desc: "Clean and modern Engaging animations & visuals" },
+                        { title: "Merchandise", desc: "Modern and Colorful products" },
                         { title: "Branding", desc: "Identity that tells a story" },
                         { title: "Editing", desc: "High-quality video production" },
                     ].map((card, i) => (
