@@ -4,11 +4,17 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import RotatingCircle from "./RotatingCircle";
 
+
 const images = [
-    "/test.svg",
-    "/image2.png",
-    "/after.png",
-    "/images.png",
+    "photoshop.svg",
+    "after.png",
+    "erasebg-transformed.png",
+    "canva.webp",
+    "pro.png",
+    "higgs.png"
+
+
+
 ];
 
 const text = "Hey there, I am a pre-finel year undergrad student, and I create compelling visual stories and design intuitive user experiences that engage and inspire.";

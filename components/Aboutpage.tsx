@@ -45,7 +45,7 @@ export default function AboutSection() {
 
           {/* CTA + Rating */}
           <div className="flex items-center gap-6">
-            <Button className="rounded-full px-6 py-5 bg-accent text-white hover:opacity-90 shadow-[0_10px_40px_var(--accent)]">
+            <Button className="rounded-full px-6 py-5 bg-accent text-white hover:opacity-90 shadow-[0_0px_80px_var(--accent)]">
               Book an Appointment
             </Button>
 
