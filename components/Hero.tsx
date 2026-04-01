@@ -4,13 +4,9 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
 
-<<<<<<< HEAD
-
-=======
 const RotatingCircle = dynamic(() => import("@/components/RotatingCircle"), {
   ssr: false,
 });
->>>>>>> 8f396a2 (error resolved)
 const images = [
     "photoshop.svg",
     "after.png",
