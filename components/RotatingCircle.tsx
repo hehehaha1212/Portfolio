@@ -1,7 +1,7 @@
+
 import { useRef } from "react";
 import { motion, useAnimationFrame } from "framer-motion";
 import { Button } from "./ui/button";
-
 const portfolioImages = [
     "https://framerusercontent.com/images/mdHohhCEac2dy5qj6Hz8xLx3o.png",
     "https://framerusercontent.com/images/F9LoqzZkQUYA0UTzwbeKgrHtxU.png",

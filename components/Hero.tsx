@@ -2,9 +2,15 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import RotatingCircle from "./RotatingCircle";
+import dynamic from "next/dynamic";
 
+<<<<<<< HEAD
 
+=======
+const RotatingCircle = dynamic(() => import("@/components/RotatingCircle"), {
+  ssr: false,
+});
+>>>>>>> 8f396a2 (error resolved)
 const images = [
     "photoshop.svg",
     "after.png",
@@ -17,7 +23,7 @@ const images = [
 
 ];
 
-const text = "Hey there, I am a pre-finel year undergrad student, and I create compelling visual stories and design intuitive user experiences that engage and inspire.";
+const text = "Hey there, I am a pre-final year undergrad student, and I create compelling visual stories and design intuitive user experiences that engage and inspire.";
 
 // ── Isolated component so hooks are called at top level ──
 const AnimatedChar = ({ char, index, total, scrollYProgress }) => {
