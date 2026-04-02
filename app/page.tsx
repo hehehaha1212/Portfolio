@@ -18,6 +18,13 @@ import FAQSection from '@/components/FAQ'
 import GlowContactForm from '@/components/GlowcontactForm'
 import FloatingShirt from '@/components/Floatingshirit'
 
+import dynamic from "next/dynamic";
+
+const BookScene = dynamic(
+  () => import("@/components/Book-Flip/BookScene"),
+  { ssr: false }
+);
+
 export default function Home() {
   return (
     <div className="bg-background text-foreground min-h-screen">
@@ -32,7 +39,7 @@ export default function Home() {
       {/* Portfolio Section */}
       <PortfolioLayered />
        
-
+    
       <GlowContactForm/>
 
       <FAQSection/>
