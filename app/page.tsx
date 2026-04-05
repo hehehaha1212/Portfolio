@@ -17,13 +17,8 @@ import PortfolioLayered from '@/components/Main4'
 import FAQSection from '@/components/FAQ'
 import GlowContactForm from '@/components/GlowcontactForm'
 import FloatingShirt from '@/components/Floatingshirit'
-
-import dynamic from "next/dynamic";
-
-const BookScene = dynamic(
-  () => import("@/components/Book-Flip/BookScene"),
-  { ssr: false }
-);
+import HeroCards from '@/components/Herocards'
+import RotatingCircle from '@/components/RotatingCircle'
 
 export default function Home() {
   return (
@@ -33,20 +28,25 @@ export default function Home() {
       <Hero />
 
       <ServicesSection />
+
+      <RotatingCircle />
       {/* Services Section */}
-      <SupportHero/>
+      <SupportHero />
+s
 
       {/* Portfolio Section */}
       <PortfolioLayered />
-       
-    
-      <GlowContactForm/>
+      <HeroCards />
 
-      <FAQSection/>
+
+      <GlowContactForm />
+
+
+      <FAQSection />
 
       {/* Footer */}
       <Footer />
-      
+
     </div>
   )
 }
