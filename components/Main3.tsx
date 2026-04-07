@@ -12,7 +12,7 @@ const images = [
 
 export default function SupportHero() {
   return (
-    <section className="relative py-28 px-4 text-white overflow-hidden bg-black">
+    <section className="relative pb-30 px-4 text-white overflow-hidden bg-black">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-purple-900/40 via-black to-black" />
@@ -33,7 +33,7 @@ export default function SupportHero() {
 
         <h2 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
           Here When You <br />
-          <span className="text-white/60">Need Us Most Important.</span>
+          <span className="text-white/60">Need Us Most.</span>
         </h2>
 
         <p className="text-white/60 max-w-2xl mx-auto mb-8">
@@ -67,7 +67,7 @@ export default function SupportHero() {
       </div>
 
       {/* Chat bubbles */}
-      <div className="absolute left-[20%] bottom-[280px] bg-blue-500 text-white text-sm px-4 py-2 rounded-full shadow-lg rotate-[-10deg]">
+      <div className="absolute left-[20%] bottom-[310px] bg-blue-500 text-white text-sm px-4 py-2 rounded-full shadow-lg rotate-[-10deg]">
        Very attractive graphics
       </div>
 

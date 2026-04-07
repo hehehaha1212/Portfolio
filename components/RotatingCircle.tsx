@@ -41,7 +41,7 @@ const RotatingCircle = () => {
     });
 
     return (
-        <section className="relative p-10 mw-full overflow-hidden bg-black"
+        <section className="relative p-50 mw-full overflow-hidden bg-black"
             style={{ minHeight: "100vh" }}
         >
             {/* Background light rays */}

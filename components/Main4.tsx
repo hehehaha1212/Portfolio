@@ -98,8 +98,10 @@ export default function PortfolioLayered() {
 
     return (
         <section ref={ref} className="relative bg-black text-white flex justify-center" style={{ height: `${(total + 1) * 100}vh` }}>
+
             <div className="w-[70%] relative">
                 <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
+                    
                     <div className="absolute inset-0 pointer-events-none">
                         <div className="absolute inset-0 bg-gradient-to-b from-accent-20 via-black to-black" />
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[300px] bg-accent-30 blur-[100px] rounded-full" />

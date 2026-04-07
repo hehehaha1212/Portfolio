@@ -40,7 +40,7 @@ export default function Navbar() {
         <>
             {/* ── Navbar bar ── */}
             <nav
-                style={{ transition: "transform 300ms" }}
+                style={{ transition: "transform 600ms" }}
                 className={`fixed top-0 w-full z-50 ${show ? "translate-y-0" : "-translate-y-full"}`}
             >
                 <div className={`backdrop-blur-xl border-b ${isWorkPage ? "bg-white/70 border-black/10" : "bg-black/40 border-white/10"}`}>
