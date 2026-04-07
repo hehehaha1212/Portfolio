@@ -26,8 +26,10 @@ export default function WorkPage() {
       </main>
 
       <FloatingShirt />
-        <BookScene />
+      <section className="w-half h-screen bg-[#F0EFEB]">
 
+        <BookScene />
+      </section>
       <PortfolioGrid2 />
       <PortfolioGrid />
 

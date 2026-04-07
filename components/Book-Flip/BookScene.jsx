@@ -7,29 +7,29 @@ import { Loader } from "@react-three/drei";
 import { UI } from "./UI";
 import { Experience } from "./Experience";
 
-export default function BookScene() {
-  const [isHovered, setIsHovered] = useState(false);
-
+function App() {
   return (
-    <div
-      className="relative w-full h-screen"
-      onPointerEnter={() => setIsHovered(true)}
-      onPointerLeave={() => setIsHovered(false)}
-    >
+    <div className="relative h-full w-full">
       <UI />
-      <Loader />
-
       <Canvas
-        className={`${isHovered ? "pointer-events-auto" : "pointer-events-none"} w-full h-full`}
+        shadows
+        onCreated={({ gl }) => gl.setClearColor("#F0EFEB", 1)}
         camera={{
-          position: [-0.5, 1, 4],
-          fov: 45,
+          position: [0, 0.08, window.innerWidth > 800 ? 4.85 : 9.2],
+          fov: 42,
         }}
       >
-        <Suspense fallback={null}>
-          <Experience isActive={isHovered} />
-        </Suspense>
+        <group position-y={0}>
+          <ambientLight intensity={0.82} />
+          <directionalLight position={[3.2, 4.4, 3.2]} intensity={1.22} />
+          <directionalLight position={[-2.6, 1.8, -2.8]} intensity={0.56} />
+          <Suspense fallback={null}>
+            <Experience />
+          </Suspense>
+        </group>
       </Canvas>
     </div>
   );
 }
+
+export default App;
