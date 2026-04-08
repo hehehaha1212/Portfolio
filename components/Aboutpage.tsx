@@ -1,3 +1,8 @@
+/*
+  components/Aboutpage.tsx
+  - Presentational About section component used by the About route and
+    other layouts. Contains descriptive content, CTA and an image.
+*/
 import { Button } from "./ui/button";
 import { Star } from "lucide-react";
 

@@ -1,3 +1,9 @@
+/*
+  Experience.jsx
+  - Controls camera framing and transforms for the book. Smoothly eases
+    the book group between the intro pose and the open pose so the 3D
+    content scales/positions consistently across viewports.
+*/
 import { OrbitControls } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useAtom } from "jotai";

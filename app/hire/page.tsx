@@ -1,3 +1,7 @@
+/*
+    app/hire/page.tsx
+    - Simple hire/contact instructions page used for hiring inquiries.
+*/
 "use client"
 
 import Navbar from '@/components/nav'

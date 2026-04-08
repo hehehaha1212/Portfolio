@@ -1,3 +1,9 @@
+/*
+  UI.jsx
+  - Exposes small UI controls for the 3D book experience (open button, prev/next,
+    page indicators) and defines shared atoms (`pageAtom`, `introAtom`) used by
+    the 3D scene. Also precomputes the `pages` manifest used by the book.
+*/
 import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
 
@@ -5,8 +11,8 @@ function OpenBookIcon({ className }) {
   return (
     <svg
       className={className}
-      width="20"
-      height="24"
+      width="18"
+      height="18"
       viewBox="0 0 32 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +50,9 @@ const pictures = [
   "PAGE11",
 ];
 
+// Current page index (0 = cover). Shared across UI and 3D book.
 export const pageAtom = atom(0);
+// Whether we are still showing the intro overlay (Open book button).
 export const introAtom = atom(true);
 export const pages = [
   {

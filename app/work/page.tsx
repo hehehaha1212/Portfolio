@@ -1,3 +1,8 @@
+/*
+  app/work/page.tsx
+  - Work/portfolio route. Shows project grids and includes the interactive
+    BookScene demo (loaded client-side only).
+*/
 "use client";
 
 import Navbar from '@/components/nav';

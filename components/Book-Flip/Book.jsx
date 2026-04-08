@@ -1,3 +1,11 @@
+/*
+  Book.jsx
+  - Implements the 3D book model and per-page mesh logic used by the
+    Experience. Exports `Book` which instantiates `Page` instances and
+    coordinates cover-opening logic and page stepping.
+*/
+
+
 import { useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useAtom } from "jotai";
@@ -14,8 +22,8 @@ import { pageAtom, pages } from "./UI";
 
 const easingFactor = 0.5;
 
-const PAGE_WIDTH = 1.28;
-const PAGE_HEIGHT = 1.71;
+const PAGE_WIDTH = 1.08;
+const PAGE_HEIGHT = 1.50;
 const PAGE_DEPTH = 0.008;
 
 // 1. & 2. USE FLAT GEOMETRY
@@ -176,7 +184,7 @@ const Page = ({
           <boxGeometry args={[PAGE_WIDTH, PAGE_HEIGHT, PAGE_DEPTH * 0.92]} />
           <meshStandardMaterial
             color="#f4ede2"
-            roughness={0.74}
+            roughness={0.14}
             metalness={0.04}
           />
         </mesh>

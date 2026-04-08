@@ -78,7 +78,7 @@ export default function FAQSection() {
                         );
                     })}
                 </div>
-                <p className="text-md md:text-2xl font-sm mt-5 mb-14 text-center">Feel free to mail us for any enquiries :  <a className="framer-text framer-styles-preset-1snln9b" data-styles-preset="CO_HimyHZ" href="mailto:maxx88461@gmail.com" target="_blank" rel="noopener">maxx88461@gmail.com</a></p>
+                <p className="text-md md:text-2xl font-sm mt-5 mb-14 pt-5 text-center">Feel free to mail us for any enquiries :  <a className="framer-text framer-styles-preset-1snln9b" data-styles-preset="CO_HimyHZ" href="mailto:maxx88461@gmail.com" target="_blank" rel="noopener">maxx88461@gmail.com</a></p>
             </div>
         </section>
     );

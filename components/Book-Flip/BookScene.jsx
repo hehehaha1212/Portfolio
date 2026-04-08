@@ -7,6 +7,12 @@ import { Loader } from "@react-three/drei";
 import { UI } from "./UI";
 import { Experience } from "./Experience";
 
+/*
+  BookScene.jsx
+  - Top-level canvas wrapper for the Book experience. Renders the `UI`
+    overlay and sets up the `Canvas` with lighting and a suspended
+    `Experience` (3D content).
+*/
 function App() {
   return (
     <div className="relative h-full w-full">

@@ -1,3 +1,7 @@
+/*
+    app/contact/page.tsx
+    - Contact route that hosts the contact form and contact-related CTAs.
+*/
 "use client"
 
 import ContactSection from '@/components/ContactPage'

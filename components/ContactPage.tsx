@@ -1,3 +1,8 @@
+/*
+    components/ContactPage.tsx
+    - Presentational contact section with stats and a contact form used by
+        the contact route and other pages that need a contact CTA.
+*/
 import { Button } from "./ui/button";
 
 export default function ContactSection() {
