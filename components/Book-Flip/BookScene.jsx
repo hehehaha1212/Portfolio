@@ -24,9 +24,9 @@ function App() {
         }}
       >
         <group position-y={0}>
-          <ambientLight intensity={0.82} />
-          <directionalLight position={[3.2, 4.4, 3.2]} intensity={1.22} />
-          <directionalLight position={[-2.6, 1.8, -2.8]} intensity={0.56} />
+          <ambientLight intensity={3} />
+          <directionalLight position={[3.2, 4.4, 3.2]} intensity={1} />
+          <directionalLight position={[-2.6, 1.8, -2.8]} intensity={1} />
           <Suspense fallback={null}>
             <Experience />
           </Suspense>
