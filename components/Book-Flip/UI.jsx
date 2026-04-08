@@ -5,7 +5,7 @@
     the 3D scene. Also precomputes the `pages` manifest used by the book.
 */
 import { atom, useAtom } from "jotai";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 function OpenBookIcon({ className }) {
   return (
@@ -103,18 +103,8 @@ function ChevronRight({ className }) {
 export const UI = () => {
   const [page, setPage] = useAtom(pageAtom);
   const [intro, setIntro] = useAtom(introAtom);
-  const skipInitialSfx = useRef(true);
 
   const maxPage = pages.length;
-
-  useEffect(() => {
-    if (skipInitialSfx.current) {
-      skipInitialSfx.current = false;
-      return;
-    }
-    const audio = new Audio("/audios/page-flip-01a.mp3");
-    audio.play().catch(() => {});
-  }, [page]);
 
   useEffect(() => {
     if (intro) return;
