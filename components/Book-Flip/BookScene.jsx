@@ -2,8 +2,6 @@
 
 import { Canvas } from "@react-three/fiber";
 import { Suspense, useState } from "react";
-import { Loader } from "@react-three/drei";
-
 import { UI } from "./UI";
 import { Experience } from "./Experience";
 
@@ -34,6 +32,7 @@ function App() {
           </Suspense>
         </group>
       </Canvas>
+      
     </div>
   );
 }
