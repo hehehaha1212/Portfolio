@@ -19,6 +19,38 @@ const projects = [
         desc: "Official Match Ball 2025/2026",
         image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/68bd4585f8aba8d4a1f0d227_EREDIVISIE-GLOBALL-THUMBNAIL-p-1600.webp",
     },
+     {
+        title: "Topps & Borussia Dortmund",
+        desc: "A Bold New Era for Borussia Dortmund's Teamset",
+        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/679ce8b0dab821e2cc27f833_Topps%20Teamset%20BVB%20Thumbnail%202.avif",
+    },
+    {
+        title: "TOTO Dutch Darts Masters",
+        desc: "Bringing the Netherland's Biggest Darts Tournament to Life",
+        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67b35aaa9d809896b6663b61_TDDM-THUMBNAIL-3X2.avif",
+        tall: true,
+    },
+    {
+        title: "Eredivisie",
+        desc: "Official Match Ball 2025/2026",
+        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/68bd4585f8aba8d4a1f0d227_EREDIVISIE-GLOBALL-THUMBNAIL-p-1600.webp",
+    },
+     {
+        title: "Topps & Borussia Dortmund",
+        desc: "A Bold New Era for Borussia Dortmund's Teamset",
+        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/679ce8b0dab821e2cc27f833_Topps%20Teamset%20BVB%20Thumbnail%202.avif",
+    },
+    {
+        title: "TOTO Dutch Darts Masters",
+        desc: "Bringing the Netherland's Biggest Darts Tournament to Life",
+        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67b35aaa9d809896b6663b61_TDDM-THUMBNAIL-3X2.avif",
+        tall: true,
+    },
+    {
+        title: "Eredivisie",
+        desc: "Official Match Ball 2025/2026",
+        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/68bd4585f8aba8d4a1f0d227_EREDIVISIE-GLOBALL-THUMBNAIL-p-1600.webp",
+    },
 
 ];
 
@@ -32,7 +64,7 @@ function Card({ project }) {
             <img
                 src={project.image}
                 alt={project.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full rounded-lg object-cover transition-transform duration-700 group-hover:scale-105"
             />
 
 

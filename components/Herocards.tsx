@@ -8,8 +8,25 @@ import { Button } from "./ui/button"
 function CardCornerDots() {
     return (
         <>
-            <span className="absolute top-2.5 left-3 w-1 h-1 rounded-full bg-white/15" />
-            <span className="absolute top-2.5 right-3 w-1 h-1 rounded-full bg-white/15" />
+            <span className="absolute top-2.5 left-3 w-1 h-1 rounded-full bg-white" />
+            <span className="absolute top-2.5 right-3 w-1 h-1 rounded-full bg-white" />
+            <span className="absolute bottom-2.5 left-3 w-1 h-1 rounded-full bg-white" />
+            <span className="absolute bottom-2.5 right-3 w-1 h-1 rounded-full bg-white" />
+        </>
+    )
+}
+
+function CardBg({ image }: { image?: string }) {
+    if (!image) return null
+    return (
+        <>
+            {/* Background image */}
+            <div
+                className="absolute inset-0 rounded-2xl bg-cover bg-center"
+                style={{ backgroundImage: `url(${image})` }}
+            />
+            {/* Dark overlay so content stays readable */}
+            <div className="absolute inset-0 rounded-2xl bg-black/55" />
         </>
     )
 }
@@ -256,11 +273,11 @@ export default function HeroCards() {
         <section className="relative py-5 px-4 sm:px-6 lg:px-8 bg-black text-white overflow-hidden min-h-screen flex items-center justify-center">
 
             <div >
-  
 
-  {/* Soft fade */}
-  <div  />
-</div>
+
+                {/* Soft fade */}
+                <div />
+            </div>
 
 
             <div className="max-w-3xl mx-auto text-center w-full">
@@ -276,11 +293,11 @@ export default function HeroCards() {
                     Ready to Transform<br />Your Business?
                 </h2>
                 <div
-  className="pointer-events-none absolute top-[80px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] blur-[80px] opacity-40"
-  style={{
-    background: "radial-gradient(ellipse at center, rgba(255, 255, 255, 0.25), transparent 70%)",
-  }}
-/>
+                    className="pointer-events-none absolute top-[80px] left-1/2 -translate-x-1/2 w-[600px] h-[300px] blur-[80px] opacity-40"
+                    style={{
+                        background: "radial-gradient(ellipse at center, rgba(255, 255, 255, 0.25), transparent 70%)",
+                    }}
+                />
 
                 <p className="text-base text-white/45 mb-9 max-w-md mx-auto leading-relaxed">
                     Nubien comes with dedicated support to help you launch and maintain your site without friction.
@@ -360,7 +377,7 @@ export default function HeroCards() {
                     </div>
                 </div>
 
-     
+
                 {/* CTA */}
                 <div className="flex py-35 items-center justify-center gap-3 flex-wrap">
                     <Button
@@ -378,7 +395,7 @@ export default function HeroCards() {
                     </Button>
                 </div>
 
-                
+
 
             </div>
         </section>

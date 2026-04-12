@@ -62,7 +62,7 @@ const Hero = () => {
                         <span className="text-accent"> & Video Editor</span>
                     </h1>
 
-                    <div
+                   {/* <div
                         className="absolute pointer-events-none select-none hidden sm:block"
                         style={{
                             left: " 73vw",   
@@ -74,7 +74,7 @@ const Hero = () => {
                     >
                     
 
-                        {/* Left fade + bottom fade — blends into page bg */}
+                        {/* Left fade + bottom fade — blends into page bg 
                         <div
                             className="absolute inset-0 rounded-2xl z-20"
                             style={{
@@ -91,6 +91,7 @@ const Hero = () => {
                             style={{ maxHeight: "full" }}
                         />
                     </div>
+                    */}
 
                     {/* ── Paragraph row with person image floating on the right ── */}
                     <div className="relative flex items-center justify-center">

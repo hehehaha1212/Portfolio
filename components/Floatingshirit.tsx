@@ -70,7 +70,7 @@ export default function FloatingShirt() {
             <main>
                 <section
                     ref={sectionRef}
-                    className="relative w-full overflow-hidden bg-[#f0efeb]"
+                    className="relative w-full overflow-visible bg-[#f0efeb]"
                     style={{ minHeight: "100vh" }}
                 >
                     {/* ── Crosshair / target SVG rings (decorative background) ── */}
@@ -90,7 +90,7 @@ export default function FloatingShirt() {
 
                     {/* ── Location eyebrow ── */}
                     <p
-                        className="absolute top-9 left-1/2 -translate-x-1/2 text-sm tracking-widest text-[#e3390a] font-mono uppercase z-10"
+                        className="absolute top-9 left-1/2 -translate-x-1/2 text-md tracking-widest text-[#e3390a] font-mono uppercase z-10"
                         style={{ letterSpacing: "0.15em" }}
                     >
                         Gorakhpur, India
@@ -112,8 +112,8 @@ export default function FloatingShirt() {
                         }}
                     >
                         <TextRow text="WE ARE" scrollY={scrollY} triggerAt={0} speed={0.0} />
-                        <TextRow  text="______THE__CREATIVE" scrollY={scrollY} triggerAt={60} speed={0.0} />
-                        <TextRow text="DESIGN __ STUDIO    " scrollY={scrollY} triggerAt={120} speed={0.0} />
+                        <TextRow  text="______THE __ CREATIVE" scrollY={scrollY} triggerAt={60} speed={0.0} />
+                        <TextRow text="DESIGN ____ STUDIO    " scrollY={scrollY} triggerAt={120} speed={0.0} />
                         
                     </div>
 
@@ -138,7 +138,7 @@ export default function FloatingShirt() {
 
                                 {/* Abstract liquid lines overlay */}
                                 <img
-                                    src="https://cdn.prod.website-files.com/6766a97af7951c214f154267/67765ca3c658d4406ab1e0e7_gh-shirt.avif"
+                                    src="https://res.cloudinary.com/dqw2fvojt/image/upload/v1775666687/merch-1_whnphg.png"
                                     alt="Portfolio signature shirt"
                                     style={{
                                         width: "100%",
@@ -194,9 +194,9 @@ export default function FloatingShirt() {
         @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
 
         @keyframes floatShirt {
-          0%   { transform: translateY(0px) rotate(-2deg); }
-          50%  { transform: translateY(-22px) rotate(2deg); }
-          100% { transform: translateY(0px) rotate(-2deg); }
+          0%   { transform: translateY(0px) rotate(-.1deg); }
+          50%  { transform: translateY(-22px) rotate(.5deg); }
+          100% { transform: translateY(0px) rotate(-.1deg); }
         }
 
         .shirt-float {
