@@ -3,30 +3,28 @@ import { useRef } from "react";
 import { motion, useAnimationFrame } from "framer-motion";
 import { Button } from "./ui/button";
 const portfolioImages = [
-    "https://framerusercontent.com/images/mdHohhCEac2dy5qj6Hz8xLx3o.png",
-    "https://framerusercontent.com/images/F9LoqzZkQUYA0UTzwbeKgrHtxU.png",
-    "https://framerusercontent.com/images/Zkc7LAnMDDFA5UyIhmoJayaPrM.png",
-    "https://framerusercontent.com/images/rQo7dT4FIzcLvbS5xhx27CBlIYI.png",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767042698/Sunday_post_lirgpq.jpg",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767042699/Sat_post_z94gn3.jpg",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1768417394/Clue-dicode_vyetsa.jpg",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767043239/DAY_2_POST_2_quskbx.jpg",
     "https://framerusercontent.com/images/AiNn1Q8eMnTVvy7xlvhRMelvUQw.png",
-    "https://framerusercontent.com/images/lI938j8IVRDakrPO5qLopvjOAag.png",
-    "https://framerusercontent.com/images/y6nsXyFCXVHybL6AG2drPt8Xug.png",
-    "https://framerusercontent.com/images/9Cq6czESZQzziX2TlS71XgHZfYo.jpeg",
-    "https://framerusercontent.com/images/WphhJDIoOTyAWBQ4nOmEaGTuaU.png",
-    "https://framerusercontent.com/images/5dV8J37lurqu7X0JZXCpKEcTQEA.png",
-    "https://framerusercontent.com/images/0Zl0ZNxSslCNHOplP4DkxYxobVY.png",
-    "https://framerusercontent.com/images/fIbnVqKMPTPFfkL2aQSsDmEYsk.png",
-    "https://framerusercontent.com/images/mdHohhCEac2dy5qj6Hz8xLx3o.png",
-    "https://framerusercontent.com/images/F9LoqzZkQUYA0UTzwbeKgrHtxU.png",
-    "https://framerusercontent.com/images/Zkc7LAnMDDFA5UyIhmoJayaPrM.png",
-    "https://framerusercontent.com/images/rQo7dT4FIzcLvbS5xhx27CBlIYI.png",
-    "https://framerusercontent.com/images/AiNn1Q8eMnTVvy7xlvhRMelvUQw.png",
-    "https://framerusercontent.com/images/lI938j8IVRDakrPO5qLopvjOAag.png",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767043238/Design_021_khfebh.jpg",
+
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767042699/post1_010_z5cp0z.jpg",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767042700/App_Coding_Pro_1_xblfw9.jpg",
+
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767042700/Bollywood_night_rzluuf.png",
+
+    " https://res.cloudinary.com/dod1dviie/image/upload/v1767042698/Sunday_post_lirgpq.jpg",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767042699/Sat_post_z94gn3.jpg",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767042699/Day-1_maisata_bg_final_esdmqk.jpg  ",
+    "https://res.cloudinary.com/dod1dviie/image/upload/v1767042700/Assignement_3_gez16c.png",
 
 ];
 
 const RADIUS = 500;
-const CARD_W = 100;
-const CARD_H = 100;
+const CARD_W = 150;
+const CARD_H = 150;
 const TOTAL = portfolioImages.length;
 
 const RotatingCircle = () => {

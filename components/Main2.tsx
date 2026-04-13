@@ -47,6 +47,11 @@ const services = [
     icon: BarChart3,
     video: "https://videos.pexels.com/video-files/3255356/3255356-uhd_2560_1440_25fps.mp4",
   },
+
+
+]
+
+const saas = [
   {
     title: "SAAS",
     subtitle: "Data-Driven Decisions",
@@ -54,6 +59,9 @@ const services = [
     icon: BarChart3,
     video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774428415/Draft-Preview_fbruuk.mp4",
   },
+]
+
+const landscape = [
   {
     title: "Landscape",
     subtitle: "Smart Websites",
@@ -70,8 +78,49 @@ const services = [
   },
 ]
 
-// Crop factor: 0.8 = show 80% of native height (cuts 10% top + 10% bottom)
-const CROP_FACTOR = 0.8
+const Ads = [
+  {
+    title: "Landscape",
+    subtitle: "Smart Websites",
+    description: "We build AI-driven websites that adapt to users and automate workflows.",
+    icon: Brain,
+    video: "https://res.cloudinary.com/dod1dviie/video/upload/v1770441080/Short_form_reel-1_gryo51.mp4",
+  },
+  {
+    title: "Landscape 2",
+    subtitle: "24/7 Customer Support",
+    description: "Instant AI-powered chatbots that automate responses and improve engagement.",
+    icon: MessageSquare,
+    video: "https://res.cloudinary.com/dod1dviie/video/upload/v1767040926/DJ_Ana_ceizc0.mp4",
+  },
+   {
+    title: "Landscape",
+    subtitle: "Smart Websites",
+    description: "We build AI-driven websites that adapt to users and automate workflows.",
+    icon: Brain,
+    video: "https://res.cloudinary.com/dod1dviie/video/upload/v1767041619/Final_amazon_dywvxv.mp4",
+  },
+]
+
+// 0.8 = show 80% of native height → crops 10% top + 10% bottom via object-cover
+const CROP_FACTOR = 0.7
+
+// ─── Gets the ratio from the video el, loading metadata first if needed ───────
+function getRatio(el: HTMLVideoElement): Promise<number> {
+  return new Promise((resolve) => {
+    const read = () => {
+      if (el.videoWidth && el.videoHeight) {
+        resolve(el.videoWidth / el.videoHeight)
+      }
+    }
+    if (el.videoWidth && el.videoHeight) {
+      resolve(el.videoWidth / el.videoHeight)
+    } else {
+      el.addEventListener("loadedmetadata", read, { once: true })
+      if (el.readyState === 0) el.load()
+    }
+  })
+}
 
 function PlayOverlay({ visible }: { visible: boolean }) {
   return (
@@ -115,41 +164,31 @@ function VideoCard({
   const wrapRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
   const [height, setHeight] = useState<number>(idleHeight)
-  const naturalRatioRef = useRef<number | null>(null)
 
-  const handleMeta = () => {
-    const el = videoRef.current
-    if (el?.videoWidth && el.videoHeight) {
-      naturalRatioRef.current = el.videoWidth / el.videoHeight
-    }
-  }
-
-  const handleEnter = () => {
-    const ratio = naturalRatioRef.current
-    const w = wrapRef.current?.offsetWidth ?? 320
-    if (ratio) setHeight(Math.round((w / ratio) * CROP_FACTOR))
+  const handleEnter = async () => {
     setHovered(true)
-    videoRef.current?.play().catch(() => {})
+    const el = videoRef.current
+    const wrap = wrapRef.current
+    if (!el || !wrap) return
+    el.play().catch(() => { })
+    const ratio = await getRatio(el)
+    const w = wrap.offsetWidth || 320
+    setHeight(Math.round((w / ratio) * CROP_FACTOR))
   }
 
   const handleLeave = () => {
-    setHeight(idleHeight)
     setHovered(false)
-    if (videoRef.current) {
-      videoRef.current.pause()
-      videoRef.current.currentTime = 0
-    }
+    setHeight(idleHeight)
+    const el = videoRef.current
+    if (el) { el.pause(); el.currentTime = 0 }
   }
 
   return (
-    <div onMouseEnter={handleEnter} onMouseLeave={handleLeave} className="group cursor-pointer">
+    <div onMouseEnter={handleEnter} onMouseLeave={handleLeave} className="cursor-pointer">
       <div
         ref={wrapRef}
         className="relative overflow-hidden rounded-xl w-full"
-        style={{
-          height,
-          transition: "height 0.5s cubic-bezier(0.23,1,0.32,1)",
-        }}
+        style={{ height, transition: "height 0.5s cubic-bezier(0.23,1,0.32,1)" }}
       >
         <video
           ref={videoRef}
@@ -158,15 +197,70 @@ function VideoCard({
           loop
           playsInline
           preload="metadata"
-          onLoadedMetadata={handleMeta}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center center" }}
         />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%)" }}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%)" }} />
+        <PlayingPill visible={hovered} />
+      </div>
+      <h3 className="mt-3 text-sm font-semibold text-white">{title}</h3>
+      <p className="text-xs text-white/60">{description}</p>
+    </div>
+  )
+}
+
+function Video({
+  video,
+  title,
+  description,
+  idleHeight = 333,
+}: {
+  video: string
+  title: string
+  description: string
+  idleHeight?: number
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const [hovered, setHovered] = useState(false)
+  const [height, setHeight] = useState<number>(idleHeight)
+
+  const CROP_FACTOR=1
+  const handleEnter = async () => {
+    setHovered(true)
+    const el = videoRef.current
+    const wrap = wrapRef.current
+    if (!el || !wrap) return
+    el.play().catch(() => { })
+    const ratio = await getRatio(el)
+    const w = wrap.offsetWidth || 320
+    setHeight(Math.round((w / ratio) * CROP_FACTOR))
+  }
+
+  const handleLeave = () => {
+    setHovered(false)
+    setHeight(idleHeight)
+    const el = videoRef.current
+    if (el) { el.pause(); el.currentTime = 0 }
+  }
+
+  return (
+    <div onMouseEnter={handleEnter} onMouseLeave={handleLeave} className="cursor-pointer">
+      <div
+        ref={wrapRef}
+        className="relative overflow-hidden rounded-sm w-full"
+        style={{ height, transition: "height 0.5s cubic-bezier(0.23,1,0.32,1)" }}
+      >
+        <video
+          ref={videoRef}
+          src={video}
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center center" }}
         />
-        <PlayOverlay visible={!hovered} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%)" }} />
         <PlayingPill visible={hovered} />
       </div>
       <h3 className="mt-3 text-sm font-semibold text-white">{title}</h3>
@@ -182,34 +276,30 @@ function ServiceCard({ service }: { service: (typeof services)[0] }) {
   const wrapRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
   const [height, setHeight] = useState<number>(180)
-  const naturalRatioRef = useRef<number | null>(null)
 
-  const handleMeta = () => {
-    const el = videoRef.current
-    if (el?.videoWidth && el.videoHeight) {
-      naturalRatioRef.current = el.videoWidth / el.videoHeight
-    }
-  }
-
-  const handleEnter = () => {
-    const ratio = naturalRatioRef.current
-    const w = wrapRef.current?.offsetWidth ?? 300
-    if (ratio) setHeight(Math.round((w / ratio) * CROP_FACTOR))
+  const handleEnter = async () => {
     setHovered(true)
-    videoRef.current?.play().catch(() => {})
+    const el = videoRef.current
+    const wrap = wrapRef.current
+    if (!el || !wrap) return
+    el.play().catch(() => { })
+    const ratio = await getRatio(el)
+    const w = wrap.offsetWidth || 300
+    setHeight(Math.round((w / ratio) * CROP_FACTOR))
   }
 
   const handleLeave = () => {
-    setHeight(180)
     setHovered(false)
-    if (videoRef.current) videoRef.current.pause()
+    setHeight(180)
+    const el = videoRef.current
+    if (el) el.pause()
   }
 
   return (
     <div
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className="group relative rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.08] p-5 flex flex-col gap-4 cursor-pointer"
+      className="relative rounded-2xl bg-white/[0.06] backdrop-blur-sm border border-white/[0.08] p-5 flex flex-col gap-4 cursor-pointer"
       style={{
         transition: "transform 0.4s cubic-bezier(0.23,1,0.32,1), box-shadow 0.4s ease",
         transform: hovered ? "scale(1.04) translateY(-4px)" : "scale(1) translateY(0px)",
@@ -225,27 +315,18 @@ function ServiceCard({ service }: { service: (typeof services)[0] }) {
       <div
         ref={wrapRef}
         className="relative overflow-hidden rounded-xl w-full"
-        style={{
-          height,
-          transition: "height 0.5s cubic-bezier(0.23,1,0.32,1)",
-        }}
+        style={{ height, transition: "height 0.5s cubic-bezier(0.23,1,0.32,1)" }}
       >
         <video
           ref={videoRef}
           src={service.video}
-          muted
           playsInline
           loop
           preload="metadata"
-          onLoadedMetadata={handleMeta}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center center" }}
         />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%)" }}
-        />
-        <PlayOverlay visible={!hovered} />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%)" }} />
         <PlayingPill visible={hovered} />
       </div>
     </div>
@@ -255,18 +336,10 @@ function ServiceCard({ service }: { service: (typeof services)[0] }) {
 // ─── ProjectTextBlock ─────────────────────────────────────────────────────────
 
 function ProjectTextBlock({
-  title,
-  body,
-  tags,
-  stat,
-  statLabel,
-  links,
+  title, body, tags, stat, statLabel, links,
 }: {
-  title: string
-  body: string
-  tags: string[]
-  stat?: string
-  statLabel?: string
+  title: string; body: string; tags: string[]
+  stat?: string; statLabel?: string
   links?: { label: string; href?: string; accent?: boolean }[]
 }) {
   return (
@@ -275,9 +348,7 @@ function ProjectTextBlock({
       <p className="text-white/60 leading-relaxed text-[15px]">{body}</p>
       <div className="flex gap-2 flex-wrap">
         {tags.map((tag) => (
-          <span key={tag} className="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-xs text-white/70 tracking-wide">
-            {tag}
-          </span>
+          <span key={tag} className="px-3 py-1 bg-white/10 border border-white/10 rounded-full text-xs text-white/70 tracking-wide">{tag}</span>
         ))}
       </div>
       {stat && (
@@ -289,11 +360,7 @@ function ProjectTextBlock({
       {links && (
         <div className="flex gap-5 mt-1">
           {links.map((l) => (
-            <a
-              key={l.label}
-              href={l.href ?? "#"}
-              className={`flex items-center gap-1 text-sm font-medium transition-opacity hover:opacity-80 ${l.accent ? "text-accent" : "text-white/50"}`}
-            >
+            <a key={l.label} href={l.href ?? "#"} className={`flex items-center gap-1 text-sm font-medium transition-opacity hover:opacity-80 ${l.accent ? "text-accent" : "text-white/50"}`}>
               {l.label}
               {l.accent && <ArrowUpRight className="w-3.5 h-3.5" />}
             </a>
@@ -311,7 +378,7 @@ export default function ServicesSection() {
     <section className="relative mx-auto py-20 px-4 sm:px-6 lg:px-8 text-white overflow-hidden" style={{ minHeight: "200px" }}>
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: "url('https://framerusercontent.com/images/HQiQT243MN1itZOX771FxR6euwI.png')" }} />
-        <div className="absolute top-30 left-0 w-full h-[300px] pointer-events-none" style={{ background: "linear-gradient(120deg, rgba(85,126,247,0.18) 10%, transparent 40%), linear-gradient(60deg, rgba(85,126,247,0.18) 20%, transparent 50%), linear-gradient(180deg, rgba(85,126,247,0.18) 0%, transparent 60%)", filter: "blur(60px)", opacity: 0.8 }} />
+        <div className="absolute top-30 left-0 w-full h-[300px] pointer-events-none" style={{ background: "linear-gradient(120deg,rgba(85,126,247,0.18) 10%,transparent 40%),linear-gradient(60deg,rgba(85,126,247,0.18) 20%,transparent 50%),linear-gradient(180deg,rgba(85,126,247,0.18) 0%,transparent 60%)", filter: "blur(60px)", opacity: 0.8 }} />
         <div className="absolute inset-0 opacity-40 mix-blend-overlay">
           <div className="w-full h-full bg-[radial-gradient(circle,_#a855f7_1px,_transparent_1px)] bg-[size:18px_18px] blur-[2px]" />
         </div>
@@ -329,12 +396,11 @@ export default function ServicesSection() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6" style={{ perspective: "1000px" }}>
-          {services.map((service, index) => (
-            <ServiceCard key={index} service={service} />
-          ))}
+          {services.map((service, index) => <ServiceCard key={index} service={service} />)}
         </div>
       </div>
 
+      {/* Advertisement */}
       <section className="w-full max-w-7xl mx-auto py-20 px-6">
         <div className="mb-10">
           <h2 className="text-3xl font-bold text-white">Advertisement</h2>
@@ -349,61 +415,64 @@ export default function ServicesSection() {
         </div>
       </section>
 
+      {/* SAAS */}
       <section className="w-full max-w-7xl mx-auto py-20 px-6">
         <div className="flex flex-col md:flex-row gap-12 items-center">
           <div className="w-full md:w-1/2">
-            <VideoCard video={services[6].video} title={services[6].title} description={services[6].description} />
+            <Video video={saas[0].video} title={saas[0].title} description={saas[0].description} />
           </div>
           <div className="w-full md:w-1/2">
             <ProjectTextBlock
               title="AI Website Engine"
               body="A powerful AI-driven platform that learns from every visitor. It adapts layout, content, and CTAs in real time — boosting conversions without any manual A/B testing."
               tags={["AI", "Automation", "SaaS", "No-code"]}
-              stat="3.4×"
-              statLabel="average conversion lift"
+          
               links={[{ label: "Live Demo", accent: true, href: "#" }, { label: "Case Study", href: "#" }]}
             />
           </div>
         </div>
       </section>
 
+      {/* Alternating rows */}
       <section className="w-full max-w-7xl mx-auto py-20 px-6 space-y-24">
         <div className="flex flex-col md:flex-row gap-12 items-center">
-          <div className="w-full md:w-1/2"><VideoCard {...services[7]} /></div>
+          <div className="w-full md:w-1/2">
+            <Video {...landscape[0]} />
+          </div>
           <div className="w-full md:w-1/2">
             <ProjectTextBlock
               title="AI Chat System"
               body="Smart assistants that scale conversations across every channel — from your website to WhatsApp. They handle FAQs, qualify leads, and hand off to your team only when it matters."
               tags={["Chatbot", "NLP", "Omnichannel"]}
-              stat="92%"
-              statLabel="queries resolved without human input"
+
               links={[{ label: "See It Live", accent: true, href: "#" }, { label: "View Docs", href: "#" }]}
             />
           </div>
         </div>
-
         <div className="flex flex-col md:flex-row-reverse gap-12 items-center">
-          <div className="w-full md:w-1/2"><VideoCard {...services[8]} /></div>
+          <div className="w-full md:w-1/2">
+            <Video {...landscape[1]} />
+          </div>
           <div className="w-full md:w-1/2">
             <ProjectTextBlock
-              title="Predictive AI"
+              title="Short Videos"
               body="Forecast market trends, customer churn, and revenue shifts before they happen. Trained on your data, our models surface actionable signals your team can act on immediately."
               tags={["Analytics", "Forecasting", "ML"]}
-              stat="↓ 40%"
-              statLabel="reduction in churn with proactive intervention"
+
               links={[{ label: "Request a Demo", accent: true, href: "#" }, { label: "Read the Report", href: "#" }]}
             />
           </div>
         </div>
       </section>
 
+      {/* Bottom 3-up */}
       <section className="max-w-6xl mx-auto py-20 px-6">
         <h3 className="text-2xl font-bold text-white">Predictive AI</h3>
         <p className="text-white/60 mt-2">Forecast trends and automate decisions.</p>
         <div className="grid mt-10 md:grid-cols-3 gap-6">
-          <VideoCard {...services[0]} />
-          <VideoCard {...services[1]} />
-          <VideoCard {...services[2]} />
+          <VideoCard {...Ads[0]} />
+          <VideoCard {...Ads[1]} />
+          <VideoCard {...Ads[2]} />
         </div>
       </section>
     </section>
