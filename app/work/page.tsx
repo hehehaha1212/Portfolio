@@ -62,7 +62,7 @@ export default function WorkPage() {
           <div className="flex h-full w-full items-center justify-center">
             <div className="text-center">
               <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-4 border-black/20 border-t-black" />
-              <p className="text-sm tracking-wide text-black/70">Loading book animation...</p>
+              <p className="text-sm tracking-wide text-black/70">Loading...</p>
             </div>
           </div>
         )}
