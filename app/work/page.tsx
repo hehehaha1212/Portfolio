@@ -5,6 +5,7 @@
 */
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Navbar from '@/components/nav';
 import Footer from '@/components/Footer';
 import FloatingShirt from '@/components/Floatingshirit';
@@ -19,6 +20,29 @@ const BookScene = dynamic(
 );
 
 export default function WorkPage() {
+  const bookSectionRef = useRef<HTMLElement | null>(null);
+  const [shouldRenderBook, setShouldRenderBook] = useState(false);
+
+  useEffect(() => {
+    const section = bookSectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (!entry?.isIntersecting) return;
+
+        observer.disconnect();
+        // Delay only this section's heavy 3D mount.
+        window.setTimeout(() => setShouldRenderBook(true), 700);
+      },
+      { rootMargin: "250px 0px" }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="bg-[#f0efeb] min-h-screen text-black">
       <Navbar />
@@ -31,9 +55,17 @@ export default function WorkPage() {
       </main>
 
       <FloatingShirt />
-      <section className="w-half h-screen bg-[#F0EFEB]">
-
-        <BookScene />
+      <section ref={bookSectionRef} className="w-half h-screen bg-[#F0EFEB]">
+        {shouldRenderBook ? (
+          <BookScene />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <div className="text-center">
+              <div className="mx-auto mb-3 h-10 w-10 animate-spin rounded-full border-4 border-black/20 border-t-black" />
+              <p className="text-sm tracking-wide text-black/70">Loading book animation...</p>
+            </div>
+          </div>
+        )}
       </section>
       <PortfolioGrid2 />
       <PortfolioGrid />

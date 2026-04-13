@@ -1,8 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
-import { Loader } from "@react-three/drei";
+import { Suspense } from "react";
 
 import { UI } from "./UI";
 import { Experience } from "./Experience";
