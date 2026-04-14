@@ -11,12 +11,12 @@ const RotatingCircle = dynamic(() => import("@/components/RotatingCircle"), {
 });
 
 const images = [
-    "photoshop.svg",
-    "after.png",
-    "erasebg-transformed.png",
-    "canva.webp",
-    "pro.png",
+    "APP.png",
+    "AP2.png",
+    "canva.png",
     "higgs.png",
+    "flowai.png",
+
 ];
 
 const text =
