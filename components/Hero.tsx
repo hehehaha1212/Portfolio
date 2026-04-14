@@ -12,7 +12,6 @@ const RotatingCircle = dynamic(() => import("@/components/RotatingCircle"), {
 
 const images = [
     "APP.png",
-    "AP2.png",
     "canva.png",
     "higgs.png",
     "flowai.png",
