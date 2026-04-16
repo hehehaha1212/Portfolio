@@ -82,85 +82,91 @@ function LeftCard() {
     return (
         <div className="w-[25vw] h-[25vw] bg-gray-700 border border-white/[0.09] rounded-2xl p-5 relative">
             <CardCornerDots />
-            <div className="w-7 h-7 rounded-full border border-white/15 mx-auto mb-2.5 flex items-center justify-center">
-                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                    <rect x="1" y="1" width="6" height="6" rx="1.5" fill="rgba(255,255,255,0.4)" />
-                    <rect x="9" y="1" width="6" height="6" rx="1.5" fill="rgba(255,255,255,0.4)" />
-                    <rect x="1" y="9" width="6" height="6" rx="1.5" fill="rgba(255,255,255,0.4)" />
-                    <rect x="9" y="9" width="6" height="6" rx="1.5" fill="rgba(255,255,255,0.4)" />
-                </svg>
+
+            <p className="text-[20px] font-semibold text-white/90 text-center mb-2">
+                Video Editing
+            </p>
+
+            <p className="text-[15px] text-white/40 text-center mb-4">
+                High-quality edits for YouTube, reels & ads with fast turnaround.
+            </p>
+
+            <div className="space-y-1.5 text-[15px] text-white/50 mb-4">
+                <p>• Cinematic cuts & transitions</p>
+                <p>• Color grading & sound design</p>
+                <p>• Shorts & long-form content</p>
             </div>
-            <p className="text-[13px] font-medium text-white/82 text-center mb-1">Welcome to the Platform</p>
-            <p className="text-[11px] text-white/30 text-center mb-3">Log in to continue.</p>
-            <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1 font-semibold">Email</p>
-            <CardInput placeholder="Your email address" />
-            <CardButton>Continue</CardButton>
-            <CardFooter text="Don't have an account?" linkText="Sign up" />
+
+            <p className="text-center text-white text-[16px] font-semibold mb-3">
+                $49<span className="text-[14px] text-white/40"> / video</span>
+            </p>
+
+            <button className="w-full bg-white text-black rounded-lg py-1.5 text-[13px] font-medium hover:bg-white/90 transition">
+                Get Started
+            </button>
         </div>
     )
 }
 
 function CenterCard() {
     return (
-        <div className="w-[25vw] h-[25vw] bg-gray-700 border border-white/[0.09] rounded-2xl p-5 relative" style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.05)" }}>
+        <div className="w-[25vw] h-[25vw] bg-gray-700 border border-white/[0.09] rounded-2xl p-5 relative">
             <CardCornerDots />
-            <div className="w-7 h-7 rounded-full border border-white/15 mx-auto mb-2.5 flex items-center justify-center">
-                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="8" r="5.5" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" />
-                    <circle cx="8" cy="8" r="2" fill="rgba(255,255,255,0.4)" />
-                </svg>
+
+            <p className="text-[22px] font-semibold text-white/90 text-center mb-2">
+                AI Video Creation
+            </p>
+
+            <p className="text-[15px] text-white/40 text-center mb-4">
+                Generate engaging videos using AI — scripts, visuals & voice included.
+            </p>
+
+            <div className="space-y-1.5 text-[15px] text-white/50 mb-4">
+                <p>• AI-generated scripts</p>
+                <p>• Voiceovers & avatars</p>
+                <p>• Social media ready</p>
             </div>
-            <p className="text-[13px] font-medium text-white/82 text-center mb-3">Sign in to SuperApp</p>
-            <p className="text-[10px] uppercase tracking-widest text-white/40 mb-1 font-semibold">Email</p>
-            <CardInput placeholder="Your email address" />
-            <CardButton>Continue</CardButton>
-            <OrDivider />
-            <SocialButton>
-                <svg width="10" height="10" viewBox="0 0 24 24">
-                    <path fill="rgba(255,255,255,0.45)" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-                    <path fill="rgba(255,255,255,0.35)" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-                    <path fill="rgba(255,255,255,0.3)" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z" />
-                    <path fill="rgba(255,255,255,0.4)" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" />
-                </svg>
-                Continue with Google
-            </SocialButton>
-            <SocialButton>
-                <svg width="10" height="10" viewBox="0 0 10 10">
-                    <rect x="0" y="0" width="4.5" height="4.5" fill="rgba(255,255,255,0.4)" />
-                    <rect x="5.5" y="0" width="4.5" height="4.5" fill="rgba(255,255,255,0.4)" />
-                    <rect x="0" y="5.5" width="4.5" height="4.5" fill="rgba(255,255,255,0.4)" />
-                    <rect x="5.5" y="5.5" width="4.5" height="4.5" fill="rgba(255,255,255,0.4)" />
-                </svg>
-                Continue with Microsoft
-            </SocialButton>
-            <CardFooter text="Don't have an account?" linkText="Sign up" />
+
+            <p className="text-center text-white text-[16px] font-semibold mb-3">
+                $99<span className="text-[13px] text-white/40"> / project</span>
+            </p>
+
+            <button className="w-full bg-white text-black rounded-lg py-1.5 text-[14px] font-medium hover:bg-white/90 transition">
+                Try Now
+            </button>
+
+            <p className="text-[13px] text-white/30 text-center mt-2">
+                Most popular choice
+            </p>
         </div>
     )
 }
-
 function RightCard() {
     return (
         <div className="w-[25vw] h-[25vw] bg-gray-700 border border-white/[0.09] rounded-2xl p-5 relative">
             <CardCornerDots />
-            <div className="w-7 h-7 rounded-full border border-white/15 mx-auto mb-2.5 flex items-center justify-center">
-                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                    <path d="M8 1.5L14 4.5V11.5L8 14.5L2 11.5V4.5L8 1.5Z" stroke="rgba(255,255,255,0.4)" strokeWidth="1.1" fill="none" />
-                </svg>
-            </div>
-            <p className="text-[13px] font-medium text-white/82 text-center mb-1">Sign in to Clamer</p>
-            <p className="text-[11px] text-white/30 text-center mb-3 leading-relaxed">
-                Enter the code from your authenticator app.
+
+            <p className="text-[20px] font-semibold text-white/90 text-center mb-2">
+                Graphic Design
             </p>
-            <div className="flex gap-1.5 justify-center mb-2.5">
-                {[0, 1, 2, 3].map((i) => (
-                    <div
-                        key={i}
-                        className="w-9 h-9 bg-white/[0.05] border border-white/[0.09] rounded-lg"
-                    />
-                ))}
+
+            <p className="text-[15px] text-white/40 text-center mb-4">
+                Stunning visuals for branding, ads, and social media creatives.
+            </p>
+
+            <div className="space-y-1.5 text-[15px] text-white/50 mb-4">
+                <p>• Social media posts</p>
+                <p>• Thumbnails & banners</p>
+                <p>• Brand identity kits</p>
             </div>
-            <CardButton>Continue</CardButton>
-            <CardFooter text="Need help?" linkText="Sign in another way" />
+
+            <p className="text-center text-white text-[16px] font-semibold mb-3">
+                $29<span className="text-[14px] text-white/40"> / design</span>
+            </p>
+
+            <button className="w-full bg-white text-black rounded-lg py-1.5 text-[13px] font-medium hover:bg-white/90 transition">
+                Order Now
+            </button>
         </div>
     )
 }

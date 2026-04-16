@@ -19,20 +19,7 @@ const services = [
     icon: MessageSquare,
     video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774430613/Vid-4_1_ocrnst.mp4",
   },
-  {
-    title: "Predictive Analytics",
-    subtitle: "Data-Driven Decisions",
-    description: "Leverage AI to analyze trends and predict outcomes for smarter strategies.",
-    icon: BarChart3,
-    video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774430179/Video-7_bp3wo2.mp4",
-  },
-  {
-    title: "AI-Powered Development",
-    subtitle: "Smart Websites",
-    description: "We build AI-driven websites that adapt to users and automate workflows.",
-    icon: Brain,
-    video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774430179/Video-7_bp3wo2.mp4",
-  },
+
   {
     title: "AI Chatbots",
     subtitle: "24/7 Customer Support",
@@ -45,7 +32,14 @@ const services = [
     subtitle: "Data-Driven Decisions",
     description: "Leverage AI to analyze trends and predict outcomes for smarter strategies.",
     icon: BarChart3,
-    video: "https://videos.pexels.com/video-files/3255356/3255356-uhd_2560_1440_25fps.mp4",
+    video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774430143/Video-4_jol4eg.mp4",
+  },
+  {
+    title: "Disney",
+    subtitle: "Data-Driven Decisions",
+    description: "Leverage AI to analyze trends and predict outcomes for smarter strategies.",
+    icon: BarChart3,
+    video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774430188/Vid-1_1_vo4byn.mp4",
   },
 
 

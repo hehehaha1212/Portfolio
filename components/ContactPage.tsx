@@ -76,16 +76,20 @@ export default function ContactSection() {
                 {/* RIGHT SIDE FORM */}
                 <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
                     <form className="space-y-6">
-
+                        <input
+                            placeholder="Name"
+                            className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 outline-none"
+                        />
                         <div className="grid grid-cols-2 gap-4">
                             <input
-                                placeholder="Your Name"
+                                placeholder="Contact"
                                 className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 outline-none"
                             />
                             <input
                                 placeholder="Your Email"
                                 className="bg-black/50 border border-white/10 rounded-lg px-4 py-3 outline-none"
                             />
+
                         </div>
 
                         <input
@@ -93,16 +97,9 @@ export default function ContactSection() {
                             className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 outline-none"
                         />
 
-                        <select className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 outline-none text-white/60">
-                            <option>Select Budget...</option>
-                            <option>$500 - $1k</option>
-                            <option>$1k - $3k</option>
-                            <option>$3k+</option>
-                        </select>
-
                         <textarea
                             placeholder="Your Message"
-                            rows={5}
+                            rows={9}
                             className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 outline-none"
                         />
 

@@ -32,7 +32,7 @@ const RotatingCircle = () => {
     const groupRef = useRef(null);
 
     useAnimationFrame((_, delta) => {
-        angleRef.current += delta * 0.009; // degrees per ms
+        angleRef.current += delta * 0.007; // degrees per ms
         if (groupRef.current) {
             groupRef.current.style.transform = `rotate(${angleRef.current}deg)`;
         }

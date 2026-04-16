@@ -6,87 +6,128 @@ const projects = [
     {
         title: "Topps & Borussia Dortmund",
         desc: "A Bold New Era for Borussia Dortmund's Teamset",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/679ce8b0dab821e2cc27f833_Topps%20Teamset%20BVB%20Thumbnail%202.avif",
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767042698/Sunday_post_lirgpq.jpg",
+        size: 1.0,
     },
     {
         title: "TOTO Dutch Darts Masters",
         desc: "Bringing the Netherland's Biggest Darts Tournament to Life",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67b35aaa9d809896b6663b61_TDDM-THUMBNAIL-3X2.avif",
-        tall: true,
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767042699/Sat_post_z94gn3.jpg",
+        size: 1.2,
     },
     {
         title: "Eredivisie",
         desc: "Official Match Ball 2025/2026",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/68bd4585f8aba8d4a1f0d227_EREDIVISIE-GLOBALL-THUMBNAIL-p-1600.webp",
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767042699/Day-1_maisata_bg_final_esdmqk.jpg",
+        size: 0.9,
     },
-     {
+    {
         title: "Topps & Borussia Dortmund",
         desc: "A Bold New Era for Borussia Dortmund's Teamset",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/679ce8b0dab821e2cc27f833_Topps%20Teamset%20BVB%20Thumbnail%202.avif",
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767042699/asbvduik_n5ag3j.jpg",
+        size: 1.1,
     },
     {
         title: "TOTO Dutch Darts Masters",
         desc: "Bringing the Netherland's Biggest Darts Tournament to Life",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67b35aaa9d809896b6663b61_TDDM-THUMBNAIL-3X2.avif",
-        tall: true,
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767042699/post1_010_z5cp0z.jpg",
+        size: 1.1,
     },
     {
         title: "Eredivisie",
         desc: "Official Match Ball 2025/2026",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/68bd4585f8aba8d4a1f0d227_EREDIVISIE-GLOBALL-THUMBNAIL-p-1600.webp",
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767042700/Bollywood_night_rzluuf.png",
+        size: 1,
     },
-     {
+    {
         title: "Topps & Borussia Dortmund",
         desc: "A Bold New Era for Borussia Dortmund's Teamset",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/679ce8b0dab821e2cc27f833_Topps%20Teamset%20BVB%20Thumbnail%202.avif",
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767042700/App_Coding_Pro_1_xblfw9.jpg",
+        size: 1.05,
     },
     {
         title: "TOTO Dutch Darts Masters",
         desc: "Bringing the Netherland's Biggest Darts Tournament to Life",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67b35aaa9d809896b6663b61_TDDM-THUMBNAIL-3X2.avif",
-        tall: true,
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767042700/Assignement_3_gez16c.png",
+        size: 0.9,
     },
     {
         title: "Eredivisie",
         desc: "Official Match Ball 2025/2026",
-        image: "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/68bd4585f8aba8d4a1f0d227_EREDIVISIE-GLOBALL-THUMBNAIL-p-1600.webp",
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767043239/DAY_2_POST_2_quskbx.jpg",
+        size: 1.1,
     },
-
 ];
 
+const banner = [
+    {
+        title: "Topps & Borussia Dortmund",
+        desc: "A Bold New Era for Borussia Dortmund's Teamset",
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767041383/main_gate_flex_fkbvao.jpg",
+    },
+    {
+        title: "Topps & Borussia Dortmund",
+        desc: "A Bold New Era for Borussia Dortmund's Teamset",
+        image: "https://res.cloudinary.com/dod1dviie/image/upload/v1767041953/Screenshot_2025-12-30-02-24-25-17_99c04817c0de5652397fc8b56c3b3817_lhkslb.jpg",
+    },
+];
+
+// Size maps to vertical scale via padding-bottom trick (aspect ratio control)
+const sizeToAspect = {
+    0.8:  "125%",  // taller
+    0.85: "120%",
+    0.9:  "115%",
+    1.0:  "100%",  // square-ish
+    1.05: "95%",
+    1.1:  "90%",
+    1.15: "87%",
+    1.2:  "83%",   // wider feel
+};
+
 function Card({ project }) {
+    const aspectPadding = sizeToAspect[project.size] ?? "100%";
+
     return (
-        <div
-            className={`group relative overflow-hidden h-full ${project.tall ? "row-span-2" : ""
-                }`}
-        >
-            {/* Image */}
-            <img
-                src={project.image}
-                alt={project.title}
-                className="absolute inset-0 w-full h-full rounded-lg object-cover transition-transform duration-700 group-hover:scale-105"
-            />
-
-
-            {/* Content */}
-            <div className="absolute bottom-0 left-0 right-0 p-4">
-                <div className="overflow-hidden">
-                    <div className="text-orange-400 font-semibold text-lg">
-                        {project.title}
-                    </div>
-                </div>
-
-                <p className="text-white/80 text-sm">{project.desc}</p>
+        <div className="group flex flex-col">
+            <div
+                className="w-full overflow-hidden rounded-lg relative"
+                style={{ paddingBottom: aspectPadding }}
+            >
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
             </div>
-            {/* Content below image */}
-            <div className="p-4 bg-transparent ">
-                <div className="overflow-hidden">
-                    <div className="text-black font-semibold text-lg">
-                        {project.title}
-                    </div>
-                </div>
+            <div className="px-1 mt-2">
+                <h3 className="text-orange-600 font-semibold text-base leading-tight">
+                    {project.title}
+                </h3>
+                <p className="text-black/70 text-sm mt-0.5">
+                    {project.desc}
+                </p>
+            </div>
+        </div>
+    );
+}
 
-                <p className="text-black/70 text-sm mt-1">{project.desc}</p>
+function BannerCard({ item }) {
+    return (
+        <div className="group flex flex-col">
+            <div className="w-full overflow-hidden rounded-lg relative" style={{ paddingBottom: "56.25%" }}>
+                <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+            </div>
+            <div className="px-1 mt-2">
+                <h3 className="text-orange-600 font-semibold text-lg">
+                    {item.title}
+                </h3>
+                <p className="text-black/70 text-sm">
+                    {item.desc}
+                </p>
             </div>
         </div>
     );
@@ -94,10 +135,18 @@ function Card({ project }) {
 
 export default function PortfolioGrid() {
     return (
-        <section className="bg-[#f0efeb] py-20 px-2 md:px-4">
-            <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-2 auto-rows-[260px]">
+        <section className="bg-[#f0efeb] py-20 px-2 md:px-4 space-y-10">
+            {/* Cards — 4 per row, varied aspect ratios */}
+            <div className="grid grid-cols-4 sm:grid-cols-4 gap-5 items-start">
                 {projects.map((project, i) => (
                     <Card key={i} project={project} />
+                ))}
+            </div>
+
+            {/* Banners — 2 per row, full width split equally, 16:9 */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {banner.map((item, i) => (
+                    <BannerCard key={i} item={item} />
                 ))}
             </div>
         </section>

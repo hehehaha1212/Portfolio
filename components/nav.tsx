@@ -80,7 +80,7 @@ export default function Navbar() {
                             <div className="hidden md:inline-flex">
                                 <Link href="/contact">
                                     <Button className={`rounded-full backdrop-blur-md border ${isWorkPage ? "bg-black/10 text-black border-black/10 hover:bg-black/20" : "bg-accent/20 text-white border-white/10 hover:bg-accent/30"}`}>
-                                        Connect With Us
+                                        Get in touch
                                     </Button>
                                 </Link>
                             </div>
@@ -196,7 +196,7 @@ export default function Navbar() {
                     <div style={{ padding: "20px 24px", borderTop: "1px solid rgba(255,255,255,0.08)" }}>
                         <Link href="/contact" onClick={close} style={{ display: "block" }}>
                             <button style={{ width: "100%", padding: "12px", borderRadius: 999, background: "rgba(72, 112, 255, 0.85)", border: "1px solid rgba(100,140,255,0.35)", color: "white", fontSize: 15, fontWeight: 600, cursor: "pointer" }}>
-                                Connect With Us
+                                Get in touch
                             </button>
                         </Link>
                     </div>
