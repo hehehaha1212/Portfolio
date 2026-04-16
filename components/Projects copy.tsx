@@ -5,37 +5,38 @@ const projects = [
         title: "Topps & Manchester United",
         desc: "Hall of Heroes - A Monumental Tribute at Old Trafford",
         image:
-            "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67d1c6a36ee550c98bfe0b71_TOPPS-MUFC-HALLOFHEROES-THUMB.jpg",
+            "https://res.cloudinary.com/dod1dviie/image/upload/v1767041383/main_gate_flex_fkbvao.jpg",
     },
     {
         title: "Ajax & Sandals Resorts",
         desc: "From fishing nets to football goals",
         image:
-            "https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67b35f8b8c750d1507210b64_FG-THUMBNAIL-3X2.avif",
+            "https://res.cloudinary.com/dod1dviie/image/upload/v1767041953/Screenshot_2025-12-30-02-24-25-17_99c04817c0de5652397fc8b56c3b3817_lhkslb.jpg",
     },
 ];
 
-export default function PortfolioList() {
+export default function PortfolioList(projects) {
     return (
 
         <section className="bg-[#f0efeb] py-16 px-4 md:px-6">
-            <div className="max-w-[1600px] mx-auto">
+            <div className="max-w-8xl mx-auto w-full">
 
                 {/* Title */}
-                <h2 className="text-lg font-semibold mb-6 text-black">
+                <h2 className="text-lg font-semibold mx0 mb-6 text-black">
                     Recent work
                 </h2>
 
                 {/* Grid */}
-                <div className="grid md:grid-cols-[50%_40%] gap-4">
+                <div className="grid md:grid-cols-[1.2fr_1fr] gap-4">
 
                     {/* LEFT (BIG) */}
                     <div>
                         <div className="overflow-hidden">
                             <img
-                                src="https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67d1c6a36ee550c98bfe0b71_TOPPS-MUFC-HALLOFHEROES-THUMB.jpg"
-                                className="w-full h-[500px] object-cover"
+                                src="https://res.cloudinary.com/dod1dviie/image/upload/v1767041383/main_gate_flex_fkbvao.jpg"
+                                className="w-full h-full object-cover rounded rounded-sm"
                                 alt=""
+                                loading="lazy"
                             />
                         </div>
 
@@ -62,9 +63,10 @@ export default function PortfolioList() {
                     <div>
                         <div className="overflow-hidden">
                             <img
-                                src="https://cdn.prod.website-files.com/6776815c172cb3537fafa18b/67b35f8b8c750d1507210b64_FG-THUMBNAIL-3X2.avif"
-                                className="w-full h-[320px] object-cover"
+                                src="https://res.cloudinary.com/dod1dviie/image/upload/v1767041953/Screenshot_2025-12-30-02-24-25-17_99c04817c0de5652397fc8b56c3b3817_lhkslb.jpg"
+                                className="w-full h-full object-cover rounded rounded-sm"
                                 alt=""
+                                loading="lazy"
                             />
                         </div>
 

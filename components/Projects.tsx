@@ -96,6 +96,7 @@ function Card({ project }) {
                 <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
             </div>
@@ -118,6 +119,7 @@ function BannerCard({ item }) {
                 <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
             </div>
@@ -135,7 +137,7 @@ function BannerCard({ item }) {
 
 export default function PortfolioGrid() {
     return (
-        <section className="bg-[#f0efeb] py-20 px-2 md:px-4 space-y-10">
+        <section className=" max-w-7xl mx-auto w-full px-4 py-20 px-2 md:px-4 space-y-10">
             {/* Cards — 4 per row, varied aspect ratios */}
             <div className="grid grid-cols-4 sm:grid-cols-4 gap-5 items-start">
                 {projects.map((project, i) => (

@@ -1,13 +1,6 @@
 
 'use client'
 
-
-{/*
-  app/page.tsx
-  - Main landing page route for the site. Composes top-level sections
-    (Hero, services, portfolio highlights, contact CTA, FAQ, footer).
-*/}
-
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Zap, Brain, Shield, Lightbulb, MessageSquare, Eye } from 'lucide-react'
 import Link from 'next/link'
@@ -40,7 +33,7 @@ export default function Home() {
       <RotatingCircle />
       {/* Services Section */}
       <SupportHero />
-      s
+      
 
       {/* Portfolio Section */}
       <PortfolioLayered />
@@ -49,7 +42,7 @@ export default function Home() {
 
       <GlowContactForm />
 
-
+    
       <FAQSection />
 
       {/* Footer */}

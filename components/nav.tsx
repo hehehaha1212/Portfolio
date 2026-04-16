@@ -9,35 +9,54 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
     const [show, setShow] = useState(true);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [lastScroll, setLastScroll] = useState(0);
+    const lastScrollRef = useRef(0);         // ← ref, not state
     const overlayRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
     const isWorkPage = pathname === "/work";
+    const isHome = pathname === "/";
+
+    // Prefetch heavy work page bundle (BookScene) on home or on hover/touch
+    const prefetchWork = () => {
+        // dynamic import — non-blocking, cached by the browser/module loader
+        import("@/components/Book-Flip/BookScene")
+            .then(() => {
+                /* prefetch successful */
+            })
+            .catch(() => {
+                /* ignore prefetch failures */
+            });
+    };
+
+    useEffect(() => {
+        if (!isHome) return;
+        // delay prefetch slightly so initial paint isn't impacted
+        const t = window.setTimeout(() => prefetchWork(), 1200);
+        return () => clearTimeout(t);
+    }, [isHome]);
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScroll = window.scrollY;
-            if (currentScroll > lastScroll && currentScroll > 80) {
+            if (currentScroll > lastScrollRef.current && currentScroll > 80) {
                 setShow(false);
             } else {
                 setShow(true);
             }
-            setLastScroll(currentScroll);
+            lastScrollRef.current = currentScroll;   // ← no re-render, always fresh
         };
-        window.addEventListener("scroll", handleScroll);
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [lastScroll]);
+    }, []);   // ← empty deps — handler never needs to re-register
 
     useEffect(() => {
         document.body.style.overflow = menuOpen ? "hidden" : "";
         return () => { document.body.style.overflow = ""; };
     }, [menuOpen]);
 
-    // Drive the overlay opacity imperatively so it transitions correctly
     useEffect(() => {
         const el = overlayRef.current;
         if (!el) return;
-        // Force a reflow so the browser registers the starting state before transitioning
         el.style.opacity = menuOpen ? "1" : "0";
         el.style.pointerEvents = menuOpen ? "auto" : "none";
     }, [menuOpen]);
@@ -47,11 +66,18 @@ export default function Navbar() {
 
     return (
         <>
-            {/* ── Navbar bar ── */}
             <nav
-                style={{ transition: "transform 600ms cubic-bezier(0.4, 0, 0.2, 1)" }}
-                className={`fixed top-0 w-full z-50 ${show ? "translate-y-0" : "-translate-y-full"}`}
+                style={{
+                    position: "fixed",
+                    top: 0,
+                    width: "100%",
+                    zIndex: 50,
+                    transform: show ? "translateY(0)" : "translateY(-100%)",
+                    transition: "transform 500ms cubic-bezier(0.4, 0, 0.2, 1)",
+                    willChange: "transform",
+                }}
             >
+
                 <div className={`backdrop-blur-xl border-b ${isWorkPage ? "bg-white/70 border-black/10" : "bg-black/40 border-white/10"}`}>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
                         <Link href="/" className="flex items-center gap-2">
@@ -64,11 +90,13 @@ export default function Navbar() {
                         </Link>
 
                         <div className="hidden md:flex items-center gap-2">
-                            {["Home", "Work", "About", "Contact"].map((item) => (
+                            {['Home', 'Work', 'About', 'Contact'].map((item) => (
                                 <Link
                                     key={item}
-                                    href={`/${item === "Home" ? "" : item.toLowerCase()}`}
-                                    className={`transition px-4 relative group ${isWorkPage ? "text-black/70 hover:text-black" : "text-white/70 hover:text-white"}`}
+                                    href={`/${item === 'Home' ? '' : item.toLowerCase()}`}
+                                    onMouseEnter={() => { if (item === 'Work') prefetchWork(); }}
+                                    onTouchStart={() => { if (item === 'Work') prefetchWork(); }}
+                                    className={`transition relative group ${isWorkPage ? 'text-black/70 hover:text-black' : 'text-white/70 hover:text-white'} ${item === 'Work' ? 'mx-2 px-3 py-1 rounded-md bg-white/5' : 'px-4'}`}
                                 >
                                     {item}
                                     <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-accent transition-all group-hover:w-full" />
@@ -97,13 +125,14 @@ export default function Navbar() {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </nav >
 
             {/* ── Mobile drawer ── */}
-            <div className="md:hidden fixed inset-0 z-[100]" style={{ pointerEvents: menuOpen ? "auto" : "none" }}>
+            < div className="md:hidden fixed inset-0 z-[100]" style={{ pointerEvents: menuOpen ? "auto" : "none" }
+            }>
 
                 {/* Overlay — opacity driven by useEffect ref, NOT by menuOpen class */}
-                <div
+                < div
                     ref={overlayRef}
                     onClick={close}
                     style={{
@@ -161,30 +190,32 @@ export default function Navbar() {
                         {links.map((item, i) => (
                             <Link
                                 key={item}
-                                href={`/${item === "Home" ? "" : item.toLowerCase().replace(/ /g, "")}`}
+                                href={`/${item === 'Home' ? '' : item.toLowerCase().replace(/ /g, '')}`}
                                 onClick={close}
+                                onMouseEnter={() => { if (item === 'Work') prefetchWork(); }}
+                                onTouchStart={() => { if (item === 'Work') prefetchWork(); }}
                                 style={{
-                                    color: "rgba(255,255,255,0.82)",
+                                    color: 'rgba(255,255,255,0.82)',
                                     fontSize: 18,
                                     fontWeight: 500,
-                                    padding: "12px 16px",
+                                    padding: '12px 16px',
                                     borderRadius: 10,
-                                    textDecoration: "none",
-                                    display: "block",
+                                    textDecoration: 'none',
+                                    display: 'block',
                                     // ↓ Staggered fade+slide driven purely by CSS — no JS needed
                                     opacity: menuOpen ? 1 : 0,
-                                    transform: menuOpen ? "translateX(0)" : "translateX(18px)",
+                                    transform: menuOpen ? 'translateX(0)' : 'translateX(18px)',
                                     transition: menuOpen
                                         ? `opacity 320ms ease ${i * 50 + 100}ms, transform 320ms ease ${i * 50 + 100}ms`
-                                        : "opacity 150ms ease, transform 150ms ease",
+                                        : 'opacity 150ms ease, transform 150ms ease',
                                 }}
-                                onMouseEnter={(e) => {
-                                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
-                                    (e.currentTarget as HTMLElement).style.color = "white";
+                                onMouseOver={(e) => {
+                                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.07)';
+                                    (e.currentTarget as HTMLElement).style.color = 'white';
                                 }}
-                                onMouseLeave={(e) => {
-                                    (e.currentTarget as HTMLElement).style.background = "transparent";
-                                    (e.currentTarget as HTMLElement).style.color = "rgba(255,255,255,0.82)";
+                                onMouseOut={(e) => {
+                                    (e.currentTarget as HTMLElement).style.background = 'transparent';
+                                    (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.82)';
                                 }}
                             >
                                 {item}
@@ -201,7 +232,7 @@ export default function Navbar() {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }

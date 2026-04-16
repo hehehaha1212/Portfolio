@@ -3,17 +3,18 @@
 import { useRef, useState } from "react"
 import { Button } from "./ui/button"
 import { Brain, MessageSquare, BarChart3, Play, ArrowUpRight } from "lucide-react"
+import PortfolioGrid from "./Projects"
 
 const services = [
   {
-    title: "AI-Powered Development",
+    title: "Short video",
     subtitle: "Smart Websites",
     description: "We build AI-driven websites that adapt to users and automate workflows.",
     icon: Brain,
     video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774430268/Vid-3_1_hlwesp.mp4",
   },
   {
-    title: "AI Chatbots",
+    title: "AI Short video",
     subtitle: "24/7 Customer Support",
     description: "Instant AI-powered chatbots that automate responses and improve engagement.",
     icon: MessageSquare,
@@ -21,21 +22,21 @@ const services = [
   },
 
   {
-    title: "AI Chatbots",
+    title: "AI Short video",
     subtitle: "24/7 Customer Support",
     description: "Instant AI-powered chatbots that automate responses and improve engagement.",
     icon: MessageSquare,
     video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774430179/Video-7_bp3wo2.mp4",
   },
   {
-    title: "Disney",
+    title: "Short video",
     subtitle: "Data-Driven Decisions",
     description: "Leverage AI to analyze trends and predict outcomes for smarter strategies.",
     icon: BarChart3,
     video: "https://res.cloudinary.com/dod1dviie/video/upload/v1774430143/Video-4_jol4eg.mp4",
   },
   {
-    title: "Disney",
+    title: "Short video",
     subtitle: "Data-Driven Decisions",
     description: "Leverage AI to analyze trends and predict outcomes for smarter strategies.",
     icon: BarChart3,
@@ -87,7 +88,7 @@ const Ads = [
     icon: MessageSquare,
     video: "https://res.cloudinary.com/dod1dviie/video/upload/v1767040926/DJ_Ana_ceizc0.mp4",
   },
-   {
+  {
     title: "Landscape",
     subtitle: "Smart Websites",
     description: "We build AI-driven websites that adapt to users and automate workflows.",
@@ -97,7 +98,7 @@ const Ads = [
 ]
 
 // 0.8 = show 80% of native height → crops 10% top + 10% bottom via object-cover
-const CROP_FACTOR = 0.7
+const CROP_FACTOR = 0.75
 
 // ─── Gets the ratio from the video el, loading metadata first if needed ───────
 function getRatio(el: HTMLVideoElement): Promise<number> {
@@ -147,7 +148,7 @@ function VideoCard({
   video,
   title,
   description,
-  idleHeight = 260,
+  idleHeight = 300,
 }: {
   video: string
   title: string
@@ -193,6 +194,7 @@ function VideoCard({
           preload="metadata"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center center" }}
+          
         />
         <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 55%)" }} />
         <PlayingPill visible={hovered} />
@@ -219,7 +221,7 @@ function Video({
   const [hovered, setHovered] = useState(false)
   const [height, setHeight] = useState<number>(idleHeight)
 
-  const CROP_FACTOR=1
+  const CROP_FACTOR = 1
   const handleEnter = async () => {
     setHovered(true)
     const el = videoRef.current
@@ -269,7 +271,7 @@ function ServiceCard({ service }: { service: (typeof services)[0] }) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
   const [hovered, setHovered] = useState(false)
-  const [height, setHeight] = useState<number>(180)
+  const [height, setHeight] = useState<number>(280)
 
   const handleEnter = async () => {
     setHovered(true)
@@ -284,7 +286,7 @@ function ServiceCard({ service }: { service: (typeof services)[0] }) {
 
   const handleLeave = () => {
     setHovered(false)
-    setHeight(180)
+    setHeight(280)
     const el = videoRef.current
     if (el) el.pause()
   }
@@ -394,8 +396,39 @@ export default function ServicesSection() {
         </div>
       </div>
 
-      {/* Advertisement */}
-      <section className="w-full max-w-7xl mx-auto py-20 px-6">
+
+      <section className="w-full max-w-7xl mx-auto py-20 px-6 space-y-24">
+        <div className="flex flex-col md:flex-row gap-12 items-center">
+          <div className="w-full md:w-1/2">
+            <Video {...landscape[0]} />
+          </div>
+          <div className="w-full md:w-1/2">
+            <ProjectTextBlock
+              title="Landscape Video"
+              body="Smart assistants that scale conversations across every channel — from your website to WhatsApp. They handle FAQs, qualify leads, and hand off to your team only when it matters."
+              tags={["story", "landscape", "generative"]}
+
+              links={[{ label: "See It Live", accent: true, href: "#" }, { label: "View Docs", href: "#" }]}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row-reverse gap-12 items-center">
+          <div className="w-full md:w-1/2">
+            <Video {...landscape[1]} />
+          </div>
+          <div className="w-full md:w-1/2">
+            <ProjectTextBlock
+              title="Landscape Video"
+              body="Forecast market trends, customer churn, and revenue shifts before they happen. Trained on your data, our models surface actionable signals your team can act on immediately."
+              tags={["story", "landscape", "generative"]}
+
+              links={[{ label: "Request a Demo", accent: true, href: "#" }, { label: "Read the Report", href: "#" }]}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/*  <section className="w-full max-w-7xl mx-auto py-20 px-6">
         <div className="mb-10">
           <h2 className="text-3xl font-bold text-white">Advertisement</h2>
           <p className="text-white/60">Showcasing Ads I made for clients powered with AI</p>
@@ -409,55 +442,29 @@ export default function ServicesSection() {
         </div>
       </section>
 
-      {/* SAAS */}
-      <section className="w-full max-w-7xl mx-auto py-20 px-6">
+      */}
+
+
+      <section className="w-full max-w-7xl mx-auto py-50 px-6">
         <div className="flex flex-col md:flex-row gap-12 items-center">
           <div className="w-full md:w-1/2">
             <Video video={saas[0].video} title={saas[0].title} description={saas[0].description} />
           </div>
           <div className="w-full md:w-1/2">
             <ProjectTextBlock
-              title="AI Website Engine"
+              title="Saas "
               body="A powerful AI-driven platform that learns from every visitor. It adapts layout, content, and CTAs in real time — boosting conversions without any manual A/B testing."
               tags={["AI", "Automation", "SaaS", "No-code"]}
-          
+
               links={[{ label: "Live Demo", accent: true, href: "#" }, { label: "Case Study", href: "#" }]}
             />
           </div>
         </div>
       </section>
 
-      {/* Alternating rows */}
-      <section className="w-full max-w-7xl mx-auto py-20 px-6 space-y-24">
-        <div className="flex flex-col md:flex-row gap-12 items-center">
-          <div className="w-full md:w-1/2">
-            <Video {...landscape[0]} />
-          </div>
-          <div className="w-full md:w-1/2">
-            <ProjectTextBlock
-              title="AI Chat System"
-              body="Smart assistants that scale conversations across every channel — from your website to WhatsApp. They handle FAQs, qualify leads, and hand off to your team only when it matters."
-              tags={["Chatbot", "NLP", "Omnichannel"]}
 
-              links={[{ label: "See It Live", accent: true, href: "#" }, { label: "View Docs", href: "#" }]}
-            />
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row-reverse gap-12 items-center">
-          <div className="w-full md:w-1/2">
-            <Video {...landscape[1]} />
-          </div>
-          <div className="w-full md:w-1/2">
-            <ProjectTextBlock
-              title="Short Videos"
-              body="Forecast market trends, customer churn, and revenue shifts before they happen. Trained on your data, our models surface actionable signals your team can act on immediately."
-              tags={["Analytics", "Forecasting", "ML"]}
+      <PortfolioGrid />
 
-              links={[{ label: "Request a Demo", accent: true, href: "#" }, { label: "Read the Report", href: "#" }]}
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Bottom 3-up */}
       <section className="max-w-6xl mx-auto py-20 px-6">

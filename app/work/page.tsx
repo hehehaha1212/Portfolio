@@ -13,6 +13,7 @@ import PortfolioGrid from '@/components/Projects';
 import PortfolioGrid2 from '@/components/Projects copy';
 
 import dynamic from "next/dynamic";
+import Carousel from "@/components/carousel";
 
 const BookScene = dynamic(
   () => import("@/components/Book-Flip/BookScene"),
@@ -69,6 +70,8 @@ export default function WorkPage() {
       </section>
       <PortfolioGrid2 />
       <PortfolioGrid />
+
+      <Carousel/>
 
       <Footer />
     </div>
